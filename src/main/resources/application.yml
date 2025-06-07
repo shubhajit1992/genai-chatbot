@@ -1,3 +1,4 @@
+#debug: true
 spring:
   application:
     name: genai-chatbot
@@ -7,9 +8,14 @@ spring:
     password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: none
+    open-in-view: false
+    properties:
+      hibernate:
+        transaction:
+          jta:
+            platform: org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform
     show-sql: true
   ai:
     openai:
@@ -20,6 +26,12 @@ spring:
 logging:
   level:
     root: INFO
-    com.shubhajit.genai.chatbot: DEBUG
+    com:
+      shubhajit:
+        genai:
+          chatbot: DEBUG
+    org:
+      springframework:
+        web: DEBUG # Enable only in development
   file:
     name: logs/genai-chatbot.log
