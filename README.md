@@ -5,6 +5,7 @@ A lightweight, stateless RESTful chatbot backend built with Spring Boot, designe
 ## Features
 
 - Stateless REST API for chat-based LLM interaction
+- Uses Spring AI's Ollama integration for local LLM inference
 - Clean, testable Spring Boot structure
 - Robust error handling and logging
 - Easily configurable via `application.yml`
@@ -34,7 +35,7 @@ ollama run mistral
 
 ### 3. Configure the Application
 
-Edit `src/main/resources/application.yml` if you want to change logging or other settings.
+Edit `src/main/resources/application.yml` to set the Ollama model and base URL, or to change logging settings.
 
 ### 4. Build and Run
 
@@ -63,10 +64,10 @@ The API will be available at `http://localhost:8080/api/chat/ask`.
 ## Project Structure
 
 - `controller/ChatController.java` — REST API endpoint
-- `service/OllamaService.java` — Service for calling Ollama LLM
+- `service/OllamaService.java` — Service for calling Ollama LLM via Spring AI
 - `model/QueryRequest.java` — DTO for chat requests
-- `config/AppConfig.java` — Spring beans (e.g., `RestTemplate`)
-- `application.yml` — Configuration
+- `config/ChatConfig.java` — Spring AI Ollama configuration
+- `application.yml` — Application configuration
 
 ## Testing
 

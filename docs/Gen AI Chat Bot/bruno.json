@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Gen AI Chat Bot",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
