@@ -24,13 +24,13 @@ repositories {
     maven { url = uri("https://repo.spring.io/milestone") }
 }
 
-extra["springAiVersion"] = "1.0.0-M2"
+extra["springAiVersion"] = "1.0.1"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
 
     // Ollama backend starter
-    implementation("org.springframework.ai:spring-ai-ollama-spring-boot-starter")
+    implementation("org.springframework.ai:spring-ai-starter-model-ollama")
 
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")

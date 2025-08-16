@@ -1,6 +1,6 @@
 package com.shubhajit.genai.chatbot.config;
 
-import static org.springframework.ai.ollama.api.OllamaOptions.DEFAULT_MODEL;
+import static org.springframework.ai.ollama.api.OllamaModel.MISTRAL;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.ollama.OllamaChatModel;
@@ -14,13 +14,16 @@ public class ChatConfig {
 
     @Bean
     public ChatClient chatClient() {
-        OllamaApi ollamaApi = new OllamaApi();
+        OllamaApi ollamaApi = OllamaApi.builder().build();
 
-        OllamaOptions options = OllamaOptions.builder()
-                .withModel(DEFAULT_MODEL)  // 👈 required
+        OllamaOptions ollamaOptions = OllamaOptions.builder()
+                .model(MISTRAL.id())  // 👈 required
                 .build();
 
-        OllamaChatModel model = new OllamaChatModel(ollamaApi, options);
+        OllamaChatModel model = OllamaChatModel.builder()
+                .ollamaApi(ollamaApi)
+                .defaultOptions(ollamaOptions)
+                .build();
 
         return ChatClient.builder(model).build();
     }
